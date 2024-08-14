@@ -5,12 +5,15 @@
             Preguntar
         </a>
         <ul>
+            @foreach ($categories as $category)
             <li class="mb-2">
                 <a href="" class="p-2 rounded-md flex bg-slate-800 items-center gap-2 font-smibold text-xs capitalize text-gray-300 hover:text-white">
-                    <span class="material-symbols-rounded text-sky-500 text-base">edit_note</span>
-                    Ejemplo
+                    <span class="material-symbols-rounded text-base" style="color: {{ $category -> color }};">category</span>
+                    {{ $category -> name }}
                 </a>
             </li>
+            @endforeach
+            
             <li>
                 <a href="" class="p-2 rounded-md flex bg-slate-800 items-center gap-2 font-smibold text-xs capitalize text-gray-300 hover:text-white">
                     <span class="material-symbols-rounded text-black text-base">manage_search</span>
