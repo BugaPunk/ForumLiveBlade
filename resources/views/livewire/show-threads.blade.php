@@ -26,23 +26,34 @@
         @foreach ($threads as $thread)
             <div class="rounded-md bg-gradient-to-r from-slate-800 to-slate-900 hover:to-slate-800 mb-4">
                 <div class="p-4 flex gap-4">
-                    <div>Image, avatar</div>
+                    <div>
+                        <img src="{{ $thread -> user -> avatar() }}" alt="{{ $thread -> user -> name }}" class="rounded-full">
+                    </div>
                     <div class="w-full">
                         <h2 class="mb-4 flex items-start justify-between">
                             <a href="" class="text-xl font-semibold text-white/90">
                                 {{ $thread -> title }}
                             </a>
-                            <span class="rounded-full text-xs py-2 px-4 capitalize" style="color: #00aced; border: 1px solid #00aced">
-                                Categoria
+                            <span class="rounded-full text-xs py-2 px-4 capitalize" style="color: {{ $thread -> category -> color }}; border: 1px solid {{ $thread -> category -> color }};">
+                                {{ $thread -> category -> name }}
                             </span>
                         </h2>
                         <p class="flex items-center justify-between w-full text-xs">
-                            <span class="text-blue-600 font-semibold">Usuario
+                            <span class="text-blue-600 font-semibold">
+                                {{ $thread -> user -> name }}
                                 <span class="text-white/90">
-                                    {{$thread->created_at->diffForHumans()}}
+                                    {{$thread -> created_at -> diffForHumans()}}
                                 </span>
                             </span>
-                            <span class="text-slate-700">Respuestas y boton</span>
+                            <span class="flex items-center gap-1 text-slate-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor" class="h-4">
+                                    <path d="M361-177q-41.85 0-69.42-28.48Q264-233.95 264-275v-77h499v-350h76.77q41.01 0 69.12 28.19Q937-645.63 937-605v437q0 42-39.5 58.5T828-124l-54-53H361ZM193-424l-62 61q-30 30-69 14.03T23-408v-440q0-40.63 28.19-68.81Q79.38-945 120-945h473.01q41.32 0 69.65 28.19Q691-888.63 691-848v327q0 40.62-28.47 68.81Q634.05-424 593-424H193Z"/>
+                                </svg>
+                                {{ $thread -> replies_count }}
+                                respuesta{{$thread -> replies_count !== 1 ? 's' : '' }}
+                                
+                                | <a href="" class="hover:text-white">Editar</a>
+                            </span>
                         </p>
                     </div>
                 </div>
