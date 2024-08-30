@@ -7,7 +7,7 @@
         <ul>
             @foreach ($categories as $category)
             <li class="mb-2">
-                <a href="" class="p-2 rounded-md flex bg-slate-800 items-center gap-2 font-smibold text-xs capitalize text-gray-300 hover:text-white">
+                <a href="#" wire:click.prevent="filterByCategory('{{ $category->id }}')" class="p-2 rounded-md flex bg-slate-800 items-center gap-2 font-smibold text-xs capitalize text-gray-300 hover:text-white">
                     <span class="material-symbols-rounded text-base" style="color: {{ $category -> color }};">category</span>
                     {{ $category -> name }}
                 </a>
@@ -15,7 +15,7 @@
             @endforeach
             
             <li>
-                <a href="" class="p-2 rounded-md flex bg-slate-800 items-center gap-2 font-smibold text-xs capitalize text-gray-300 hover:text-white">
+                <a href="#" wire:click.prevent="filterByCategory('')" class="p-2 rounded-md flex bg-slate-800 items-center gap-2 font-smibold text-xs capitalize text-gray-300 hover:text-white">
                     <span class="material-symbols-rounded text-black text-base">manage_search</span>
                     Todos los resultados
                 </a>
